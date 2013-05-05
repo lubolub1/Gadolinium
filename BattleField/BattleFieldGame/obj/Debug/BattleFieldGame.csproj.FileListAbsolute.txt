@@ -1,0 +1,5 @@
+c:\users\lubo\documents\visual studio 2012\Projects\BattleField\BattleFieldGame\bin\Debug\BattleFieldGame.exe.config
+c:\users\lubo\documents\visual studio 2012\Projects\BattleField\BattleFieldGame\bin\Debug\BattleFieldGame.exe
+c:\users\lubo\documents\visual studio 2012\Projects\BattleField\BattleFieldGame\bin\Debug\BattleFieldGame.pdb
+c:\users\lubo\documents\visual studio 2012\Projects\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.exe
+c:\users\lubo\documents\visual studio 2012\Projects\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.pdb
