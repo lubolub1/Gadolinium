@@ -2,8 +2,13 @@
 {
     public class Mine
     {
-        // a tova e mina
-        public int X { get; set; }
-        public int Y { get; set; }
+        public int Row { get; set; }
+        public int Col { get; set; }
+
+        public Mine(int row, int col)
+        {
+            this.Row = row;
+            this.Col = col;
+        }
     }
 }

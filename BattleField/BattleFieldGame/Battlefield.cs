@@ -4,21 +4,18 @@ namespace BattleField
 {
     class Battlefield
     {
-        //poLeto za biTka
-
-
         private char[,] gameField;
+
         public Battlefield()
         {
             gameField = null;
         }
+
         public void Start()
         {
-
             Console.WriteLine(@"Welcome to ""Battle Field"" game. ");
             int size = 0;
             string readBuffer = null;
-
 
             Console.Write("Enter battle field size: n=");
             readBuffer = Console.ReadLine();
@@ -27,14 +24,16 @@ namespace BattleField
             {
                 Console.WriteLine("Wrong format!");
                 Console.Write("Enter battle field size: n=");
-
+                readBuffer = Console.ReadLine();
             }
 
             if (size > 10 || size <= 0)
-            { Start(); }
-            else{
-
-                gameField = GameServices.GenerateField(size);
+            {
+                Start(); 
+            }
+            else
+            {
+                gameField = GameServices.GreateField(size);
                 StartInteraction();
             }
         }
@@ -43,38 +42,34 @@ namespace BattleField
         {
             string readBuffer = null;
             int blownMines = 0;
-            for (int i = 0; i < 50; i++)
-                Console.WriteLine();
+            Console.WriteLine();            
 
-
-            while (GameServices.ContainsMines(gameField))
+            while (GameServices.AreMinesLeft(gameField))
             {
-                GameServices.PokajiMiRezultata(gameField);
+                GameServices.ShowFiledOnConsole(gameField);
+
                 Console.Write("Please enter coordinates: ");
                 readBuffer = Console.ReadLine();
-                Mine mineToBlow = 
-                    
-                    
-                    GameServices.ExtractMineFromString(readBuffer);
+                Mine mineCoordinates = GameServices.ExtractMineFromString(readBuffer);
 
-                while (mineToBlow == null)
+                while (mineCoordinates == null)
                 {
                     Console.Write("Please enter coordinates: ");
                     readBuffer = Console.ReadLine();
-                    mineToBlow = GameServices.ExtractMineFromString(readBuffer);
+                    mineCoordinates = GameServices.ExtractMineFromString(readBuffer);
                 }
 
-                if (!GameServices.IsValidMove(gameField, mineToBlow.X, mineToBlow.Y))
+                if (!GameServices.IsValidMove(gameField, mineCoordinates.Row, mineCoordinates.Col))
                 {
                     Console.WriteLine("Invalid move!");
                     continue;
                 }
 
-                GameServices.Гърми(gameField, mineToBlow);
+                GameServices.DestroyFieldCells(gameField, mineCoordinates);
                 blownMines++;
             }
 
-            GameServices.PokajiMiRezultata(gameField);
+            GameServices.ShowFiledOnConsole(gameField);
             Console.WriteLine("Game over. Detonated mines: {0}", blownMines);
         }
     }

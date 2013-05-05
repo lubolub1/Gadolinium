@@ -3,3 +3,9 @@ c:\users\lubo\documents\visual studio 2012\Projects\BattleField\BattleFieldGame\
 c:\users\lubo\documents\visual studio 2012\Projects\BattleField\BattleFieldGame\bin\Debug\BattleFieldGame.pdb
 c:\users\lubo\documents\visual studio 2012\Projects\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.exe
 c:\users\lubo\documents\visual studio 2012\Projects\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.pdb
+C:\Users\Lubo\Gadolinium\BattleField\BattleFieldGame\bin\Debug\BattleFieldGame.exe.config
+C:\Users\Lubo\Gadolinium\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.exe
+C:\Users\Lubo\Gadolinium\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.pdb
+C:\Users\Lubo\Gadolinium\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.csprojResolveAssemblyReference.cache
+C:\Users\Lubo\Gadolinium\BattleField\BattleFieldGame\bin\Debug\BattleFieldGame.exe
+C:\Users\Lubo\Gadolinium\BattleField\BattleFieldGame\bin\Debug\BattleFieldGame.pdb
