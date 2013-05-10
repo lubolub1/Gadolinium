@@ -1,0 +1,7 @@
+C:\Users\Lubo\Gadolinium\BattleField\BattleFieldGameTests\bin\Debug\BattleFieldGameTests.dll
+C:\Users\Lubo\Gadolinium\BattleField\BattleFieldGameTests\bin\Debug\BattleFieldGameTests.pdb
+C:\Users\Lubo\Gadolinium\BattleField\BattleFieldGameTests\bin\Debug\BattleFieldGame.exe
+C:\Users\Lubo\Gadolinium\BattleField\BattleFieldGameTests\bin\Debug\BattleFieldGame.pdb
+C:\Users\Lubo\Gadolinium\BattleField\BattleFieldGameTests\obj\Debug\BattleFieldGameTests.csprojResolveAssemblyReference.cache
+C:\Users\Lubo\Gadolinium\BattleField\BattleFieldGameTests\obj\Debug\BattleFieldGameTests.dll
+C:\Users\Lubo\Gadolinium\BattleField\BattleFieldGameTests\obj\Debug\BattleFieldGameTests.pdb

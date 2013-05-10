@@ -5,15 +5,19 @@
 
     public class GameServices
     {
-        private static readonly Random rand = new Random();
-        private const double LOWER_MINES_COUNT = 0.15;
-        private const double UPPER_MINES_COUNT = 0.3;
-        private const char FIELD_SYMBOL = '-';
-        private const char DESTROYED_SYMBOL = 'X';
+        public static readonly Random rand = new Random();
+        public const double LOWER_MINES_COUNT = 0.15;
+        public const double UPPER_MINES_COUNT = 0.3;
+        public const char FIELD_SYMBOL = '-';
+        public const char DESTROYED_SYMBOL = 'X';
+
+        enum ExplosionType
+        {
+            One = 1, Two = 2, Three = 3, Four = 4, Five = 5
+        };
 
 
-
-        public static char[,] GreateField(int size)
+        public static char[,] CreateField(int size)
         {
             char[,] field = new char[size, size];
 
@@ -66,9 +70,14 @@
         private static int DetermineMinesCount(int size)
         {
             int fieldSize = size * size;
-            int lowerMinesCount = (int)(LOWER_MINES_COUNT * fieldSize);
-            int upperMinesCount = (int)(UPPER_MINES_COUNT * fieldSize);
+            int lowerMinesCount = (int)(Math.Ceiling(LOWER_MINES_COUNT * fieldSize));
+            int upperMinesCount = (int)(Math.Ceiling(UPPER_MINES_COUNT * fieldSize));
             int minesCount = rand.Next(lowerMinesCount, upperMinesCount);
+
+            if (size == 1)
+            {
+                minesCount--;
+            }
 
             return minesCount;
         }
@@ -161,7 +170,7 @@
                 new Mine(mine.Row,mine.Col + 2 )};
 
             MineHits(field, minesHits);
-            ExplosionTypeTwo(field, mine);            
+            ExplosionTypeTwo(field, mine);
         }
 
         private static void ExplosionTypeFour(char[,] field, Mine mine)
@@ -173,10 +182,10 @@
                     bool upperDoubleRight = (row == mine.Row - 2) && (col == mine.Col - 2);
                     bool upperDoubleLeft = (row == mine.Row - 2) && (col == mine.Col + 2);
                     bool downDoubleRight = (row == mine.Row + 2) && (col == mine.Col - 2);
-                    bool downDoubleLeft = (row == mine.Row + 2) && (col == mine.Col + 2);                    
-                    
-                    if (AreCordinatesInAField(field, row, col)&&!upperDoubleRight&&!upperDoubleLeft&&
-                        !downDoubleRight&&!downDoubleLeft)
+                    bool downDoubleLeft = (row == mine.Row + 2) && (col == mine.Col + 2);
+
+                    if (AreCordinatesInAField(field, row, col) && !upperDoubleRight && !upperDoubleLeft &&
+                        !downDoubleRight && !downDoubleLeft)
                     {
                         field[row, col] = DESTROYED_SYMBOL;
                     }
@@ -200,31 +209,42 @@
 
         public static void DestroyFieldCells(char[,] field, Mine mine)
         {
-            char mineType = field[mine.Row, mine.Col];
+            string mineType = field[mine.Row, mine.Col].ToString();
+            ExplosionType explosionType = ExplosionType.One;
 
-            switch (mineType)
+            try
             {
-                case '1':
+                explosionType = (ExplosionType)Enum.Parse(typeof(ExplosionType), mineType);
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("'{0}' is not a member of the ExplosionType enumeration.", mineType);
+            }
+            
+
+            switch (explosionType)
+            {
+                case ExplosionType.One:
                     {
                         ExpolosionTypeOne(field, mine);
                     }
                     break;
-                case '2':
+                case ExplosionType.Two:
                     {
                         ExplosionTypeTwo(field, mine);
                     }
                     break;
-                case '3':
+                case ExplosionType.Three:
                     {
                         ExplosionTypeThree(field, mine);
                     }
                     break;
-                case '4':
+                case ExplosionType.Four:
                     {
                         ExplosionTypeFour(field, mine);
                     }
                     break;
-                case '5':
+                case ExplosionType.Five:
                     {
                         ExplosionTypeFive(field, mine);
                     }
@@ -302,7 +322,7 @@
                 return null;
             }
 
-            return new Mine(x,y);
+            return new Mine(x, y);
         }
     }
 }

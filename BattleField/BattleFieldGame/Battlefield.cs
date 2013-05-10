@@ -29,11 +29,12 @@ namespace BattleField
 
             if (size > 10 || size <= 0)
             {
+                Console.WriteLine("Try number between 1 and 10!");
                 Start(); 
             }
             else
             {
-                gameField = GameServices.GreateField(size);
+                gameField = GameServices.CreateField(size);
                 StartInteraction();
             }
         }
