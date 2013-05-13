@@ -1,4 +1,4 @@
-﻿namespace BattleField
+﻿namespace BattleFieldGame
 {
     using System;
     using System.Collections.Generic;
@@ -11,23 +11,17 @@
         public const char FIELD_SYMBOL = '-';
         public const char DESTROYED_SYMBOL = 'X';
 
-        enum ExplosionType
-        {
-            One = 1, Two = 2, Three = 3, Four = 4, Five = 5
-        };
-
-
         public static char[,] CreateField(int size)
         {
             char[,] field = new char[size, size];
 
-            FullUpFieldWithSymbol(field);
-            FullUpFieldWithMines(field);
+            FillFieldWithDefaultSymbol(field);
+            PlaceMines(field);
 
             return field;
         }
 
-        private static void FullUpFieldWithMines(char[,] field)
+        private static void PlaceMines(char[,] field)
         {
             List<Mine> mines = new List<Mine>();
             int size = field.GetLength(0);
@@ -39,14 +33,13 @@
                 int mineCol = rand.Next(0, size);
                 Mine newMine = new Mine(mineRow, mineCol);
 
-                if (!GameServices.ListContainsMine(mines, newMine))
+                if (mines.Contains(newMine))
                 {
                     mines.Add(newMine);
 
                     int mineType = rand.Next('1', '6');
                     field[mineRow, mineCol] = Convert.ToChar(mineType);
                 }
-
                 else
                 {
                     minesCount++;
@@ -54,7 +47,7 @@
             }
         }
 
-        private static void FullUpFieldWithSymbol(char[,] field)
+        private static void FillFieldWithDefaultSymbol(char[,] field)
         {
             int size = field.GetLength(0);
 
@@ -80,19 +73,6 @@
             }
 
             return minesCount;
-        }
-
-        private static bool ListContainsMine(List<Mine> mines, Mine mine)
-        {
-            foreach (Mine nextMine in mines)
-            {
-                if (nextMine.Row == mine.Row && nextMine.Col == mine.Col)
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
 
         public static bool AreMinesLeft(char[,] field)
@@ -123,29 +103,29 @@
             return true;
         }
 
-        private static void MineHits(char[,] field, List<Mine> minesHits)
+        private static void MineHits(char[,] field, List<Mine> hitPositions)
         {
-            foreach (var mineHit in minesHits)
+            foreach (var hitPosition in hitPositions)
             {
-                if (AreCordinatesInAField(field, mineHit.Row, mineHit.Col))
+                if (AreCordinatesInAField(field, hitPosition.Row, hitPosition.Col))
                 {
-                    field[mineHit.Row, mineHit.Col] = DESTROYED_SYMBOL;
+                    field[hitPosition.Row, hitPosition.Col] = DESTROYED_SYMBOL;
                 }
             }
         }
 
         private static void ExpolosionTypeOne(char[,] field, Mine mine)
         {
-            List<Mine> minesHits = new List<Mine>{
-                new Mine(mine.Row - 1, mine.Col - 1 ) ,
-                 new Mine(mine.Row - 1,mine.Col + 1),
-               new Mine(mine.Row + 1, mine.Col - 1), 
-                new Mine(mine.Row + 1,mine.Col + 1 )};
+            List<Mine> hitPositions = new List<Mine>
+            {
+                new Mine(mine.Row - 1, mine.Col - 1),
+                new Mine(mine.Row - 1,mine.Col + 1),
+                new Mine(mine.Row + 1, mine.Col - 1),
+                new Mine(mine.Row + 1,mine.Col + 1)
+            };
 
-            MineHits(field, minesHits);
+            MineHits(field, hitPositions);
         }
-
-
 
         private static void ExplosionTypeTwo(char[,] field, Mine mine)
         {
@@ -163,13 +143,15 @@
 
         private static void ExplosionTypeThree(char[,] field, Mine mine)
         {
-            List<Mine> minesHits = new List<Mine>{
-                new Mine(mine.Row - 2, mine.Col ) ,
-                 new Mine(mine.Row +2,mine.Col),
-               new Mine(mine.Row , mine.Col - 2), 
-                new Mine(mine.Row,mine.Col + 2 )};
+            List<Mine> hitPositions = new List<Mine>
+            {
+                new Mine(mine.Row - 2, mine.Col),
+                new Mine(mine.Row + 2,mine.Col),
+                new Mine(mine.Row , mine.Col - 2),
+                new Mine(mine.Row,mine.Col + 2)
+            };
 
-            MineHits(field, minesHits);
+            MineHits(field, hitPositions);
             ExplosionTypeTwo(field, mine);
         }
 
@@ -220,35 +202,36 @@
             {
                 Console.WriteLine("'{0}' is not a member of the ExplosionType enumeration.", mineType);
             }
-            
 
             switch (explosionType)
             {
                 case ExplosionType.One:
                     {
                         ExpolosionTypeOne(field, mine);
+                        break;
                     }
-                    break;
                 case ExplosionType.Two:
                     {
                         ExplosionTypeTwo(field, mine);
+                        break;
                     }
-                    break;
                 case ExplosionType.Three:
                     {
                         ExplosionTypeThree(field, mine);
+                        break;
                     }
-                    break;
                 case ExplosionType.Four:
                     {
                         ExplosionTypeFour(field, mine);
+                        break;
                     }
-                    break;
                 case ExplosionType.Five:
                     {
                         ExplosionTypeFive(field, mine);
+                        break;
                     }
-                    break;
+                default:
+                    throw new NotImplementedException("This type of explosion is not supported yet.");
             }
         }
 
@@ -266,7 +249,7 @@
             return true;
         }
 
-        public static void ShowFiledOnConsole(char[,] field)
+        public static void ShowFieldOnConsole(char[,] field)
         {
             Console.Write("   ");
             int size = field.GetLength(0);
@@ -301,7 +284,7 @@
         {
             if (line == null || line.Length < 3 || !line.Contains(" "))
             {
-                Console.WriteLine("Invalid index!");
+                Console.WriteLine("Invalid input for indices!");
                 return null;
             }
 
