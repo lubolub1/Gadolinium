@@ -5,7 +5,7 @@
 
     public class GameServices
     {
-        public static readonly Random rand = new Random();
+        public static readonly Random Rand = new Random();
         public const double LOWER_MINES_COUNT = 0.15;
         public const double UPPER_MINES_COUNT = 0.3;
         public const char FIELD_SYMBOL = '-';
@@ -29,15 +29,15 @@
 
             for (int i = 0; i < minesCount; i++)
             {
-                int mineRow = rand.Next(0, size);
-                int mineCol = rand.Next(0, size);
+                int mineRow = Rand.Next(0, size);
+                int mineCol = Rand.Next(0, size);
                 Mine newMine = new Mine(mineRow, mineCol);
 
-                if (mines.Contains(newMine))
+                if (!mines.Contains(newMine))
                 {
                     mines.Add(newMine);
 
-                    int mineType = rand.Next('1', '6');
+                    int mineType = Rand.Next('1', '6');
                     field[mineRow, mineCol] = Convert.ToChar(mineType);
                 }
                 else
@@ -65,7 +65,7 @@
             int fieldSize = size * size;
             int lowerMinesCount = (int)(Math.Ceiling(LOWER_MINES_COUNT * fieldSize));
             int upperMinesCount = (int)(Math.Ceiling(UPPER_MINES_COUNT * fieldSize));
-            int minesCount = rand.Next(lowerMinesCount, upperMinesCount);
+            int minesCount = Rand.Next(lowerMinesCount, upperMinesCount);
 
             if (size == 1)
             {

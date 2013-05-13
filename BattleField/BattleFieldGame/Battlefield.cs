@@ -28,6 +28,7 @@
             }
 
             gameField = GameServices.CreateField(size);
+            Console.WriteLine(88);
             StartInteraction();
         }
 
