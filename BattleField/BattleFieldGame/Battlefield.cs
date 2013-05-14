@@ -1,9 +1,8 @@
 ﻿namespace BattleFieldGame
 {
     using System;
-    using System.Text;
 
-    public class Battlefield
+    class Battlefield
     {
         private char[,] gameField;
 
@@ -12,7 +11,7 @@
             gameField = null;
         }
 
-        public void StartGame()
+        public void Start()
         {
             Console.WriteLine(@"Welcome to ""Battle Field"" game. ");
             int size = 0;
@@ -28,80 +27,8 @@
                 readBuffer = Console.ReadLine();
             }
 
-            gameField = GameFieldServices.CreateField(size);
+            gameField = GameServices.CreateField(size);
             StartInteraction();
-        }
-
-        /// <summary>
-        /// Method which stringify a field in the required form.
-        /// </summary>
-        /// <param name="field">Given field.</param>
-        /// <returns>Returns string.</returns>
-        public static string StringifyField(char[,] field)
-        {
-            StringBuilder fieldStringify = new StringBuilder();
-            int size = field.GetLength(0);
-
-            fieldStringify.Append("   ");
-
-            for (int i = 0; i < size; i++)
-            {
-                fieldStringify.AppendFormat("{0} ", i);
-            }
-
-            fieldStringify.Append(Environment.NewLine);
-            fieldStringify.Append("   ");
-
-            for (int i = 0; i < size * 2; i++)
-            {
-                fieldStringify.Append("-");
-            }
-
-            fieldStringify.Append(Environment.NewLine);
-
-            for (int i = 0; i < size; i++)
-            {
-                fieldStringify.AppendFormat("{0} |", i);
-                for (int j = 0; j < size; j++)
-                {
-                    fieldStringify.AppendFormat("{0} ", field[i, j]);
-                }
-                fieldStringify.Append(Environment.NewLine);
-            }
-            return fieldStringify.ToString();
-        }
-
-        /// <summary>
-        /// From a given string extract mine.
-        /// </summary>
-        /// <param name="line">Given string.</param>
-        /// <returns>Return a mine.</returns>
-        public static Mine ExtractMineFromString(string line)
-        {
-            if (line == null || line.Length < 3 || !line.Contains(" "))
-            {
-                Console.WriteLine("Invalid input for indices!");
-                return null;
-            }
-
-            string[] splited = line.Split(' ');
-
-            int x = 0;
-            int y = 0;
-
-            if (!int.TryParse(splited[0], out x))
-            {
-                Console.WriteLine("Invalid index!");
-                return null;
-            }
-
-            if (!int.TryParse(splited[1], out y))
-            {
-                Console.WriteLine("Invalid index!");
-                return null;
-            }
-
-            return new Mine(x, y);
         }
 
         private void StartInteraction()
@@ -110,22 +37,22 @@
             int blownMines = 0;
             Console.WriteLine();
 
-            while (GameFieldServices.AreMinesLeft(gameField))
+            while (GameServices.AreMinesLeft(gameField))
             {
-                string stringifiedField = StringifyField(gameField);
+                string stringifiedField = GameServices.StringifyField(gameField);
                 Console.WriteLine(stringifiedField);
                 Mine mineCoordinates;
                 do
                 {
                     Console.Write("Please enter coordinates: ");
                     readBuffer = Console.ReadLine();
-                    mineCoordinates = ExtractMineFromString(readBuffer);
+                    mineCoordinates = GameServices.ExtractMineFromString(readBuffer);
                 }
                 while (mineCoordinates == null);
 
-                if (GameFieldServices.IsValidMove(gameField, mineCoordinates.Row, mineCoordinates.Col))
+                if (GameServices.IsValidMove(gameField, mineCoordinates.Row, mineCoordinates.Col))
                 {
-                    GameFieldServices.DestroyFieldCells(gameField, mineCoordinates);
+                    GameServices.DestroyFieldCells(gameField, mineCoordinates);
                     blownMines++;
                 }
                 else
@@ -134,7 +61,7 @@
                 }
             }
 
-            string stringifiedFieldEnd = StringifyField(gameField);
+            string stringifiedFieldEnd = GameServices.StringifyField(gameField);
             Console.WriteLine(stringifiedFieldEnd);
             Console.WriteLine("Game over. Detonated mines: {0}", blownMines);
         }
