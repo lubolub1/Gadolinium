@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BattleFieldGame</name>
+    </assembly>
+    <members>
+        <member name="T:BattleFieldGame.BattleFieldConsole">
+            <summary>
+            Class responsible for console interface input and output.
+            </summary>
+        </member>
+        <member name="F:BattleFieldGame.BattleFieldConsole.gameField">
+            <summary>
+            Represents a game field.
+            </summary>
+        </member>
+        <member name="M:BattleFieldGame.BattleFieldConsole.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BattleFieldGame.BattleFieldConsole"/> class.
+            </summary>
+        </member>
+        <member name="M:BattleFieldGame.BattleFieldConsole.StartGame">
+            <summary>
+            Run BattleFieldGame using console.
+            </summary>
+        </member>
+        <member name="M:BattleFieldGame.BattleFieldConsole.StringifyField(System.Char[0:,0:])">
+            <summary>
+            Method which transform a field in a string the required form.
+            </summary>
+            <param name="field">Given field.</param>
+            <returns>Returns string.</returns>
+        </member>
+        <member name="M:BattleFieldGame.BattleFieldConsole.ExtractMineFromString(System.String)">
+            <summary>
+            From a given string extract mine.
+            </summary>
+            <param name="line">Given string.</param>
+            <returns>Return a mine.</returns>
+        </member>
+        <member name="M:BattleFieldGame.BattleFieldConsole.StartInteraction">
+            <summary>
+            Responsible for users interactions.
+            </summary>
+        </member>
+        <member name="T:BattleFieldGame.ExplosionType">
+            <summary>
+            Represents all explosion types.
+            </summary>
+        </member>
+        <member name="F:BattleFieldGame.ExplosionType.One">
+            <summary>
+            Type one explosion.
+            </summary>
+        </member>
+        <member name="F:BattleFieldGame.ExplosionType.Two">
+            <summary>
+            Type two explosion.
+            </summary>
+        </member>
+        <member name="F:BattleFieldGame.ExplosionType.Three">
+            <summary>
+            Type three explosion.
+            </summary>
+        </member>
+        <member name="F:BattleFieldGame.ExplosionType.Four">
+            <summary>
+            Type four explosion.
+            </summary>
+        </member>
+        <member name="F:BattleFieldGame.ExplosionType.Five">
+            <summary>
+            Type five explosion.
+            </summary>
+        </member>
+        <member name="T:BattleFieldGame.GameFieldServices">
+            <summary>
+            Represents GameFieldServices class who includes all methods
+            needed for playing the game.
+            </summary>
+        </member>
+        <member name="F:BattleFieldGame.GameFieldServices.LOWER_MINES_COUNT">
+            <summary>
+            Represents minimal mines count in percentages.
+            </summary>
+        </member>
+        <member name="F:BattleFieldGame.GameFieldServices.UPPER_MINES_COUNT">
+            <summary>
+            Represents maximal mines count in percentages.
+            </summary>
+        </member>
+        <member name="F:BattleFieldGame.GameFieldServices.FIELD_SYMBOL">
+            <summary>
+            Represents empty cell on the field.
+            </summary>
+        </member>
+        <member name="F:BattleFieldGame.GameFieldServices.DESTROYED_SYMBOL">
+            <summary>
+            Represents destroyed cell on the field.
+            </summary>
+        </member>
+        <member name="F:BattleFieldGame.GameFieldServices.rand">
+            <summary>
+            Represents random numbers generator.
+            </summary>
+        </member>
+        <member name="M:BattleFieldGame.GameFieldServices.CreateField(System.Int32)">
+            <summary>
+            Create a game field from given size.
+            </summary>
+            <param name="size">Given size</param>
+            <returns>returns the created field in char two dimension array.</returns>
+        </member>
+        <member name="M:BattleFieldGame.GameFieldServices.PlaceMines(System.Char[0:,0:])">
+            <summary>
+            Locate mines in a given field. Mines count is between 15% and 30%
+            of the field size. The mines and located in random positions.
+            </summary>
+            <param name="field">Given Field</param>
+        </member>
+        <member name="M:BattleFieldGame.GameFieldServices.FillFieldWithDefaultSymbol(System.Char[0:,0:])">
+            <summary>
+            Field is filled with the default symbol.
+            </summary>
+            <param name="field">Given field.</param>
+        </member>
+        <member name="M:BattleFieldGame.GameFieldServices.DetermineMinesCount(System.Int32)">
+            <summary>
+            Determine mines count from default min and max border.
+            </summary>
+            <param name="size">Size of the field</param>
+            <returns>returns the determined numbers of mines</returns>
+        </member>
+        <member name="M:BattleFieldGame.GameFieldServices.AreMinesLeft(System.Char[0:,0:])">
+            <summary>
+            Check if there are mines on the field.
+            </summary>
+            <param name="field">Given field.</param>
+            <returns>Returns are there mines in the field or not.</returns>
+        </member>
+        <member name="M:BattleFieldGame.GameFieldServices.AreCordinatesInAField(System.Char[0:,0:],System.Int32,System.Int32)">
+            <summary>
+            Check if given coordinates are in the field.
+            </summary>
+            <param name="field">Given field.</param>
+            <param name="x">X coordinate.</param>
+            <param name="y">Y coordinate.</param>
+            <returns>Returns are the coordinates in the field or not.</returns>
+        </member>
+        <member name="M:BattleFieldGame.GameFieldServices.MineHits(System.Char[0:,0:],System.Collections.Generic.List{BattleFieldGame.Mine})">
+            <summary>
+            Fill field with destroy symbols when curtain cells are hit by a mine.
+            </summary>
+            <param name="field">Given field</param>
+            <param name="hitPositions">List containing cell which must be destroyed.</param>
+        </member>
+        <member name="M:BattleFieldGame.GameFieldServices.ExpolosionTypeOne(System.Char[0:,0:],BattleFieldGame.Mine)">
+            <summary>
+            Field is filled with given mine explosion of type one.
+            </summary>
+            <param name="field">Given field.</param>
+            <param name="mine">Given mine.</param>
+        </member>
+        <member name="M:BattleFieldGame.GameFieldServices.ExplosionTypeTwo(System.Char[0:,0:],BattleFieldGame.Mine)">
+            <summary>
+            Field is filled with given mine explosion of type two.
+            </summary>
+            <param name="field">Given field.</param>
+            <param name="mine">Given mine.</param>
+        </member>
+        <member name="M:BattleFieldGame.GameFieldServices.ExplosionTypeThree(System.Char[0:,0:],BattleFieldGame.Mine)">
+            <summary>
+            Field is filled with given mine explosion of type three.
+            </summary>
+            <param name="field">Given field.</param>
+            <param name="mine">Given mine.</param>
+        </member>
+        <member name="M:BattleFieldGame.GameFieldServices.ExplosionTypeFour(System.Char[0:,0:],BattleFieldGame.Mine)">
+            <summary>
+            Field is filled with given mine explosion of type four.
+            </summary>
+            <param name="field">Given field.</param>
+            <param name="mine">Given mine.</param>
+        </member>
+        <member name="M:BattleFieldGame.GameFieldServices.ExplosionTypeFive(System.Char[0:,0:],BattleFieldGame.Mine)">
+            <summary>
+            Field is filled with given mine explosion of type five.
+            </summary>
+            <param name="field">Given field.</param>
+            <param name="mine">Given mine.</param>
+        </member>
+        <member name="M:BattleFieldGame.GameFieldServices.DestroyFieldCells(System.Char[0:,0:],BattleFieldGame.Mine)">
+            <summary>
+            Method which determine mine type of explosion.
+            </summary>
+            <param name="field">Given field.</param>
+            <param name="mine">Given mine.</param>
+        </member>
+        <member name="M:BattleFieldGame.GameFieldServices.IsValidMove(System.Char[0:,0:],System.Int32,System.Int32)">
+            <summary>
+            Check if the user given coordinates are valid move.
+            </summary>
+            <param name="field">Given field.</param>
+            <param name="x">X coordinate.</param>
+            <param name="y">Y coordinate.</param>
+            <returns>Returns is valid move or not.</returns>
+        </member>
+        <member name="T:BattleFieldGame.Mine">
+            <summary>
+            Two dimension mine representation.
+            </summary>
+        </member>
+        <member name="M:BattleFieldGame.Mine.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BattleFieldGame.Mine"/> class.
+            </summary>
+            <param name="row">X(row) coordinate.</param>
+            <param name="col">Y(col) coordinate.</param>
+        </member>
+        <member name="M:BattleFieldGame.Mine.Equals(System.Object)">
+            <summary>
+            Set equal method.
+            </summary>
+            <param name="obj">Compared object</param>
+            <returns>Returns are the two objects equal.</returns>
+        </member>
+        <member name="M:BattleFieldGame.Mine.GetHashCode">
+            <summary>
+            Set new GetHashCodeMethod.
+            </summary>
+            <returns>Returns hash code.</returns>
+        </member>
+        <member name="P:BattleFieldGame.Mine.Row">
+            <summary>
+            Get or set X(row) coordinate.
+            </summary>
+        </member>
+        <member name="P:BattleFieldGame.Mine.Col">
+            <summary>
+            get or set Y(col) coordinate.
+            </summary>
+        </member>
+        <member name="T:BattleFieldGame.Engine">
+            <summary>
+            Class used for starting the game
+            </summary>
+        </member>
+        <member name="M:BattleFieldGame.Engine.Main">
+            <summary>
+            Create instance of BattleFieldConsole and run it.
+            </summary>
+        </member>
+    </members>
+</doc>

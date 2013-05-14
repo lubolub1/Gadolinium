@@ -84,7 +84,8 @@ namespace BattleFieldGameTests
         [TestMethod]
         public void AreMinesLeftTrueTest()
         {
-            char[,] testedField = new char[,]{
+            char[,] testedField = new char[,]
+            {
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,'1'},
             };
@@ -95,7 +96,8 @@ namespace BattleFieldGameTests
         [TestMethod]
         public void AreMinesLeftFalseTest()
         {
-            char[,] testedField = new char[,]{
+            char[,] testedField = new char[,]
+            {
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             };
@@ -106,7 +108,8 @@ namespace BattleFieldGameTests
         [TestMethod]
         public void IsvalidMoveOutOfRangeTest()
         {
-            char[,] testedField = new char[,]{
+            char[,] testedField = new char[,]
+            {
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,'1'},
             };
@@ -117,7 +120,8 @@ namespace BattleFieldGameTests
         [TestMethod]
         public void IsvalidMoveNotMineTest()
         {
-            char[,] testedField = new char[,]{
+            char[,] testedField = new char[,]
+            {
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,'1'},
             };
@@ -128,7 +132,8 @@ namespace BattleFieldGameTests
         [TestMethod]
         public void IsvalidMoveMineTest()
         {
-            char[,] testedField = new char[,]{
+            char[,] testedField = new char[,]
+            {
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,'1'},
             };
@@ -139,14 +144,16 @@ namespace BattleFieldGameTests
         [TestMethod]
         public void ExposionTypeOneTest()
         {
-            char[,] testedField = new char[,]{
+            char[,] testedField = new char[,]
+            {
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,'1',GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL}
             };
-            char[,] expectedResultField = new char[,]{
+            char[,] expectedResultField = new char[,]
+            {
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
@@ -172,13 +179,15 @@ namespace BattleFieldGameTests
                     }
                 }
             }
+
             return true;
         }
 
         [TestMethod]
         public void ExposionTypeTwoTest()
         {
-            char[,] testedField = new char[,]{
+            char[,] testedField = new char[,]
+            {
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,'2',GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},

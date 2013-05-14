@@ -1,5 +1,5 @@
 ﻿// ********************************
-// <copyright file="Battlefield.cs" company="Gadolinium">
+// <copyright file="BattleFieldConsole.cs" company="Gadolinium">
 // Copyright (c) 2013 Telerik Academy. All rights reserved.
 // </copyright>
 //
@@ -11,7 +11,7 @@ namespace BattleFieldGame
     using System.Text;
 
     /// <summary>
-    /// Class responisble for console interfase input and output.
+    /// Class responsible for console interface input and output.
     /// </summary>
     public class BattleFieldConsole
     {
@@ -31,7 +31,7 @@ namespace BattleFieldGame
         /// </summary>
         public BattleFieldConsole()
         {
-            gameField = null;
+            this.gameField = null;
         }
 
         #endregion
@@ -57,16 +57,16 @@ namespace BattleFieldGame
                 readBuffer = Console.ReadLine();
             }
 
-            gameField = GameFieldServices.CreateField(size);
-            StartInteraction();
+            this.gameField = GameFieldServices.CreateField(size);
+            this.StartInteraction();
         }
 
         /// <summary>
-        /// Method which stringify a field in the required form.
+        /// Method which transform a field in a string the required form.
         /// </summary>
         /// <param name="field">Given field.</param>
         /// <returns>Returns string.</returns>
-        public static string StringifyField(char[,] field)
+        public string StringifyField(char[,] field)
         {
             StringBuilder fieldStringify = new StringBuilder();
             int size = field.GetLength(0);
@@ -91,12 +91,15 @@ namespace BattleFieldGame
             for (int i = 0; i < size; i++)
             {
                 fieldStringify.AppendFormat("{0} |", i);
+
                 for (int j = 0; j < size; j++)
                 {
                     fieldStringify.AppendFormat("{0} ", field[i, j]);
                 }
+
                 fieldStringify.Append(Environment.NewLine);
             }
+
             return fieldStringify.ToString();
         }
 
@@ -105,7 +108,7 @@ namespace BattleFieldGame
         /// </summary>
         /// <param name="line">Given string.</param>
         /// <returns>Return a mine.</returns>
-        public static Mine ExtractMineFromString(string line)
+        public Mine ExtractMineFromString(string line)
         {
             if (line == null || line.Length < 3 || !line.Contains(" "))
             {
@@ -134,7 +137,7 @@ namespace BattleFieldGame
         }
 
         /// <summary>
-        /// Responisble for users interactions.
+        /// Responsible for users interactions.
         /// </summary>
         private void StartInteraction()
         {
@@ -142,22 +145,22 @@ namespace BattleFieldGame
             int blownMines = 0;
             Console.WriteLine();
 
-            while (GameFieldServices.AreMinesLeft(gameField))
+            while (GameFieldServices.AreMinesLeft(this.gameField))
             {
-                string stringifiedField = StringifyField(gameField);
+                string stringifiedField = this.StringifyField(this.gameField);
                 Console.WriteLine(stringifiedField);
                 Mine mineCoordinates;
                 do
                 {
                     Console.Write("Please enter coordinates: ");
                     readBuffer = Console.ReadLine();
-                    mineCoordinates = ExtractMineFromString(readBuffer);
+                    mineCoordinates = this.ExtractMineFromString(readBuffer);
                 }
                 while (mineCoordinates == null);
 
-                if (GameFieldServices.IsValidMove(gameField, mineCoordinates.Row, mineCoordinates.Col))
+                if (GameFieldServices.IsValidMove(this.gameField, mineCoordinates.Row, mineCoordinates.Col))
                 {
-                    GameFieldServices.DestroyFieldCells(gameField, mineCoordinates);
+                    GameFieldServices.DestroyFieldCells(this.gameField, mineCoordinates);
                     blownMines++;
                 }
                 else
@@ -166,7 +169,7 @@ namespace BattleFieldGame
                 }
             }
 
-            string stringifiedFieldEnd = StringifyField(gameField);
+            string stringifiedFieldEnd = this.StringifyField(this.gameField);
             Console.WriteLine(stringifiedFieldEnd);
             Console.WriteLine("Game over. Detonated mines: {0}", blownMines);
         }

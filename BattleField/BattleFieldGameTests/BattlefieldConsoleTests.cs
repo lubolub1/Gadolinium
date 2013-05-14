@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BattleFieldGame;
-
-namespace BattleFieldGameTests
+﻿namespace BattleFieldGameTests
 {
+    using BattleFieldGame;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
+
     [TestClass]
     public class BattlefieldConsoleTests
     {
@@ -12,7 +12,8 @@ namespace BattleFieldGameTests
         {
             string test = "1 1";
             Mine correctMine = new Mine(1, 1);
-            Mine testedMine = BattleFieldConsole.ExtractMineFromString(test);
+            BattleFieldConsole testGame = new BattleFieldConsole();
+            Mine testedMine = testGame.ExtractMineFromString(test);
 
             Assert.IsTrue(correctMine.Col == testedMine.Col && correctMine.Row == testedMine.Row);
         }
@@ -21,30 +22,31 @@ namespace BattleFieldGameTests
         public void ExtractMineFromStringIncorrectInputTest1()
         {
             string test = "a 1";
-
-            Assert.IsNull(BattleFieldConsole.ExtractMineFromString(test));
+            BattleFieldConsole testGame = new BattleFieldConsole();
+            Assert.IsNull(testGame.ExtractMineFromString(test));
         }
 
         [TestMethod]
         public void ExtractMineFromStringIncorrectInputTest2()
         {
             string test = "1 a";
-
-            Assert.IsNull(BattleFieldConsole.ExtractMineFromString(test));
+            BattleFieldConsole testGame = new BattleFieldConsole();
+            Assert.IsNull(testGame.ExtractMineFromString(test));
         }
 
         [TestMethod]
         public void ExtractMineFromStringIncorrectInputNullTest()
         {
             string test = null;
-
-            Assert.IsNull(BattleFieldConsole.ExtractMineFromString(test));
+            BattleFieldConsole testGame = new BattleFieldConsole();
+            Assert.IsNull(testGame.ExtractMineFromString(test));
         }
 
         [TestMethod]
         public void StringifyFieldTest()
         {
-            char[,] testedField = new char[,]{
+            char[,] testedField = new char[,]
+            {
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
             {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,'1',GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
@@ -59,7 +61,8 @@ namespace BattleFieldGameTests
                 "3 |- - - - - " + Environment.NewLine +
                 "4 |- - - - - " + Environment.NewLine;
 
-            Assert.AreEqual(expectedResult, BattleFieldConsole.StringifyField(testedField));
+            BattleFieldConsole testGame = new BattleFieldConsole();
+            Assert.AreEqual(expectedResult, testGame.StringifyField(testedField));
         }
     }
 }

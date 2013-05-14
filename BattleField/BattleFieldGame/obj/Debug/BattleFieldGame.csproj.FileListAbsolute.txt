@@ -15,3 +15,7 @@ C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Gadolinium\BattleField\Bat
 C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Gadolinium\BattleField\BattleFieldGame\bin\Debug\BattleFieldGame.exe
 C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Gadolinium\BattleField\BattleFieldGame\bin\Debug\BattleFieldGame.pdb
 C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Gadolinium\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.csprojResolveAssemblyReference.cache
+C:\Users\Lubo\Desktop\BattleField\BattleFieldGame.exe.config
+C:\Users\Lubo\Desktop\BattleField\BattleFieldGame.exe
+C:\Users\Lubo\Desktop\BattleField\BattleFieldGame.pdb
+C:\Users\Lubo\Desktop\BattleField\BattleFieldGame.XML

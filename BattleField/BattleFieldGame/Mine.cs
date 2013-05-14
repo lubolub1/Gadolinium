@@ -5,7 +5,6 @@
 //
 // ********************************
 
-
 namespace BattleFieldGame
 {
     using System;
@@ -18,12 +17,12 @@ namespace BattleFieldGame
         #region Fields
 
         /// <summary>
-        /// X(row) coordinate.
+        /// Get or set X(row) coordinate.
         /// </summary>
         public int Row { get; set; }
 
         /// <summary>
-        /// Y(col) coordinate.
+        /// get or set Y(col) coordinate.
         /// </summary>
         public int Col { get; set; }
 
@@ -50,7 +49,7 @@ namespace BattleFieldGame
         /// Set equal method.
         /// </summary>
         /// <param name="obj">Compared object</param>
-        /// <returns>Returs are the two objects equal.</returns>
+        /// <returns>Returns are the two objects equal.</returns>
         public override bool Equals(object obj)
         {
             Mine mine = obj as Mine;
@@ -58,16 +57,17 @@ namespace BattleFieldGame
             {
                 return false;
             }
+
             return this.Row == mine.Row && this.Col == mine.Col;
         }
                 
         /// <summary>
         /// Set new GetHashCodeMethod.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns hash code.</returns>
         public override int GetHashCode()
         {
-            return 11 * this.Row + this.Col;
+            return 11 * (this.Row + this.Col);
         }
         #endregion
     }

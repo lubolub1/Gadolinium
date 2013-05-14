@@ -8,7 +8,7 @@
 namespace BattleFieldGame
 {
     using System;
-    using System.Collections.Generic;    
+    using System.Collections.Generic;
 
     /// <summary>
     /// Represents GameFieldServices class who includes all methods
@@ -17,35 +17,31 @@ namespace BattleFieldGame
     public class GameFieldServices
     {
         #region Fields
-
-        /// <summary>
-        /// Represents random numbers generator.
-        /// </summary>
-        private static readonly Random Rand = new Random();
-
+        
         /// <summary>
         /// Represents minimal mines count in percentages.
         /// </summary>
         private const double LOWER_MINES_COUNT = 0.15;
-
 
         /// <summary>
         /// Represents maximal mines count in percentages.
         /// </summary>
         private const double UPPER_MINES_COUNT = 0.3;
 
-
         /// <summary>
         /// Represents empty cell on the field.
         /// </summary>
         public const char FIELD_SYMBOL = '-';
-
-
+        
         /// <summary>
         /// Represents destroyed cell on the field.
         /// </summary>
         public const char DESTROYED_SYMBOL = 'X';
 
+        /// <summary>
+        /// Represents random numbers generator.
+        /// </summary>
+        private static readonly Random rand = new Random();
         #endregion
 
         #region Methods
@@ -66,7 +62,7 @@ namespace BattleFieldGame
         }
 
         /// <summary>
-        /// Locate mines in a given field. Mines count is beetween 15% and 30%
+        /// Locate mines in a given field. Mines count is between 15% and 30%
         /// of the field size. The mines and located in random positions.
         /// </summary>
         /// <param name="field">Given Field</param>
@@ -78,15 +74,15 @@ namespace BattleFieldGame
 
             for (int i = 0; i < minesCount; i++)
             {
-                int mineRow = Rand.Next(0, size);
-                int mineCol = Rand.Next(0, size);
+                int mineRow = rand.Next(0, size);
+                int mineCol = rand.Next(0, size);
                 Mine newMine = new Mine(mineRow, mineCol);
 
                 if (!mines.Contains(newMine))
                 {
                     mines.Add(newMine);
 
-                    int mineType = Rand.Next('1', '6');
+                    int mineType = rand.Next('1', '6');
                     field[mineRow, mineCol] = Convert.ToChar(mineType);
                 }
                 else
@@ -113,7 +109,6 @@ namespace BattleFieldGame
             }
         }
 
-
         /// <summary>
         /// Determine mines count from default min and max border.
         /// </summary>
@@ -124,7 +119,7 @@ namespace BattleFieldGame
             int fieldSize = size * size;
             int lowerMinesCount = (int)(Math.Ceiling(LOWER_MINES_COUNT * fieldSize));
             int upperMinesCount = (int)(Math.Ceiling(UPPER_MINES_COUNT * fieldSize));
-            int minesCount = Rand.Next(lowerMinesCount, upperMinesCount);
+            int minesCount = rand.Next(lowerMinesCount, upperMinesCount);
 
             if (size == 1)
             {
@@ -178,7 +173,7 @@ namespace BattleFieldGame
         /// Fill field with destroy symbols when curtain cells are hit by a mine.
         /// </summary>
         /// <param name="field">Given field</param>
-        /// <param name="hitPositions">List containing cell which must be destoyed.</param>
+        /// <param name="hitPositions">List containing cell which must be destroyed.</param>
         private static void MineHits(char[,] field, List<Mine> hitPositions)
         {
             foreach (var hitPosition in hitPositions)
@@ -313,30 +308,20 @@ namespace BattleFieldGame
             switch (explosionType)
             {
                 case ExplosionType.One:
-                    {
-                        ExpolosionTypeOne(field, mine);
-                        break;
-                    }
+                    ExpolosionTypeOne(field, mine);
+                    break;
                 case ExplosionType.Two:
-                    {
-                        ExplosionTypeTwo(field, mine);
-                        break;
-                    }
+                    ExplosionTypeTwo(field, mine);
+                    break;
                 case ExplosionType.Three:
-                    {
-                        ExplosionTypeThree(field, mine);
-                        break;
-                    }
+                    ExplosionTypeThree(field, mine);
+                    break;
                 case ExplosionType.Four:
-                    {
-                        ExplosionTypeFour(field, mine);
-                        break;
-                    }
+                    ExplosionTypeFour(field, mine);
+                    break;
                 case ExplosionType.Five:
-                    {
-                        ExplosionTypeFive(field, mine);
-                        break;
-                    }
+                    ExplosionTypeFive(field, mine);
+                    break;
                 default:
                     throw new NotImplementedException("This type of explosion is not supported yet.");
             }
@@ -355,13 +340,14 @@ namespace BattleFieldGame
             {
                 return false;
             }
+
             if (field[x, y] == DESTROYED_SYMBOL || field[x, y] == FIELD_SYMBOL)
             {
                 return false;
             }
 
             return true;
-        }                
+        }
         #endregion
     }
 }

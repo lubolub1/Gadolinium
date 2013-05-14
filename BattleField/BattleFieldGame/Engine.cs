@@ -5,21 +5,20 @@
 //
 // ********************************
 
-
 namespace BattleFieldGame
 {
     /// <summary>
     /// Class used for starting the game
     /// </summary>
-    class Engine
+    public class Engine
     {
         /// <summary>
-        /// Create instanse of BattleFieldConsole and run it.
+        /// Create instance of BattleFieldConsole and run it.
         /// </summary>
-        static void Main()
-        { 
+        public static void Main()
+        {
             BattleFieldConsole game = new BattleFieldConsole();
-            game.StartGame();            
+            game.StartGame();
         }
     }
 }
