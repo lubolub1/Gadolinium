@@ -121,7 +121,8 @@
                 new Mine(mine.Row - 1, mine.Col - 1),
                 new Mine(mine.Row - 1,mine.Col + 1),
                 new Mine(mine.Row + 1, mine.Col - 1),
-                new Mine(mine.Row + 1,mine.Col + 1)
+                new Mine(mine.Row + 1,mine.Col + 1),
+                new Mine(mine.Row,mine.Col)
             };
 
             MineHits(field, hitPositions);
