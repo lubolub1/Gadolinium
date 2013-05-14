@@ -50,27 +50,27 @@
         </member>
         <member name="F:BattleFieldGame.ExplosionType.One">
             <summary>
-            Type one exposion.
+            Type one explosion.
             </summary>
         </member>
         <member name="F:BattleFieldGame.ExplosionType.Two">
             <summary>
-            Type two exposion.
+            Type two explosion.
             </summary>
         </member>
         <member name="F:BattleFieldGame.ExplosionType.Three">
             <summary>
-            Type three exposion.
+            Type three explosion.
             </summary>
         </member>
         <member name="F:BattleFieldGame.ExplosionType.Four">
             <summary>
-            Type four exposion.
+            Type four explosion.
             </summary>
         </member>
         <member name="F:BattleFieldGame.ExplosionType.Five">
             <summary>
-            Type five exposion.
+            Type five explosion.
             </summary>
         </member>
         <member name="T:BattleFieldGame.GameFieldServices">
@@ -99,7 +99,7 @@
             Represents destroyed cell on the field.
             </summary>
         </member>
-        <member name="F:BattleFieldGame.GameFieldServices.Rand">
+        <member name="F:BattleFieldGame.GameFieldServices.rand">
             <summary>
             Represents random numbers generator.
             </summary>
@@ -113,7 +113,7 @@
         </member>
         <member name="M:BattleFieldGame.GameFieldServices.PlaceMines(System.Char[0:,0:])">
             <summary>
-            Locate mines in a given field. Mines count is beetween 15% and 30%
+            Locate mines in a given field. Mines count is between 15% and 30%
             of the field size. The mines and located in random positions.
             </summary>
             <param name="field">Given Field</param>
@@ -152,7 +152,7 @@
             Fill field with destroy symbols when curtain cells are hit by a mine.
             </summary>
             <param name="field">Given field</param>
-            <param name="hitPositions">List containing cell which must be destoyed.</param>
+            <param name="hitPositions">List containing cell which must be destroyed.</param>
         </member>
         <member name="M:BattleFieldGame.GameFieldServices.ExpolosionTypeOne(System.Char[0:,0:],BattleFieldGame.Mine)">
             <summary>
@@ -222,22 +222,22 @@
             Set equal method.
             </summary>
             <param name="obj">Compared object</param>
-            <returns>Returs are the two objects equal.</returns>
+            <returns>Returns are the two objects equal.</returns>
         </member>
         <member name="M:BattleFieldGame.Mine.GetHashCode">
             <summary>
             Set new GetHashCodeMethod.
             </summary>
-            <returns></returns>
+            <returns>Returns hash code.</returns>
         </member>
         <member name="P:BattleFieldGame.Mine.Row">
             <summary>
-            X(row) coordinate.
+            Get or set X(row) coordinate.
             </summary>
         </member>
         <member name="P:BattleFieldGame.Mine.Col">
             <summary>
-            Y(col) coordinate.
+            get or set Y(col) coordinate.
             </summary>
         </member>
         <member name="T:BattleFieldGame.Engine">
@@ -247,7 +247,7 @@
         </member>
         <member name="M:BattleFieldGame.Engine.Main">
             <summary>
-            Create instanse of BattleFieldConsole and run it.
+            Create instance of BattleFieldConsole and run it.
             </summary>
         </member>
     </members>

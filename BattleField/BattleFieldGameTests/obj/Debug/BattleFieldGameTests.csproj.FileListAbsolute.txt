@@ -13,3 +13,4 @@ C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Gadolinium\BattleField\Bat
 C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Gadolinium\BattleField\BattleFieldGameTests\obj\Debug\BattleFieldGameTests.dll
 C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Gadolinium\BattleField\BattleFieldGameTests\obj\Debug\BattleFieldGameTests.pdb
 C:\Users\Lubo\Gadolinium\BattleField\BattleFieldGameTests\bin\Debug\BattleFieldGame.xml
+C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Gadolinium\BattleField\BattleFieldGameTests\bin\Debug\BattleFieldGame.xml

@@ -1,6 +1,6 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BattleFieldGame;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BattleFieldGameTests
 {
@@ -86,8 +86,8 @@ namespace BattleFieldGameTests
         {
             char[,] testedField = new char[,]
             {
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,'1'},
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, '1' },
             };
 
             Assert.IsTrue(GameFieldServices.AreMinesLeft(testedField));
@@ -98,8 +98,8 @@ namespace BattleFieldGameTests
         {
             char[,] testedField = new char[,]
             {
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
             };
 
             Assert.IsFalse(GameFieldServices.AreMinesLeft(testedField));
@@ -110,8 +110,8 @@ namespace BattleFieldGameTests
         {
             char[,] testedField = new char[,]
             {
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,'1'},
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, '1' },
             };
 
             Assert.IsFalse(GameFieldServices.IsValidMove(testedField, -1, 0));
@@ -122,8 +122,8 @@ namespace BattleFieldGameTests
         {
             char[,] testedField = new char[,]
             {
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,'1'},
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, '1' },
             };
 
             Assert.IsFalse(GameFieldServices.IsValidMove(testedField, 0, 0));
@@ -134,31 +134,31 @@ namespace BattleFieldGameTests
         {
             char[,] testedField = new char[,]
             {
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,'1'},
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, '1' },
             };
 
             Assert.IsTrue(GameFieldServices.IsValidMove(testedField, 1, 1));
-        }        
+        }
 
         [TestMethod]
         public void ExposionTypeOneTest()
         {
             char[,] testedField = new char[,]
             {
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,'1',GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL}
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, '1', GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL }
             };
             char[,] expectedResultField = new char[,]
             {
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL}
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL }
             };
             Mine mine = new Mine(2, 2);
 
@@ -188,18 +188,19 @@ namespace BattleFieldGameTests
         {
             char[,] testedField = new char[,]
             {
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,'2',GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL}
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, '2', GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL }
             };
-            char[,] expectedResultField = new char[,]{
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL}
+            char[,] expectedResultField = new char[,]
+            {
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL }
             };
             Mine mine = new Mine(2, 2);
 
@@ -211,19 +212,21 @@ namespace BattleFieldGameTests
         [TestMethod]
         public void ExposionTypeThreeTest()
         {
-            char[,] testedField = new char[,]{
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,'3',GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL}
+            char[,] testedField = new char[,]
+            {
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, '3', GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL }
             };
-            char[,] expectedResultField = new char[,]{
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL}
+            char[,] expectedResultField = new char[,]
+            {
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL }
             };
             Mine mine = new Mine(2, 2);
 
@@ -235,19 +238,21 @@ namespace BattleFieldGameTests
         [TestMethod]
         public void ExposionTypeFourTest()
         {
-            char[,] testedField = new char[,]{
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,'4',GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL}
+            char[,] testedField = new char[,]
+            {
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, '4', GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL }
             };
-            char[,] expectedResultField = new char[,]{
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL},
-            {GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL},
-            {GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.FIELD_SYMBOL}
+            char[,] expectedResultField = new char[,]
+            {
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL },
+                { GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL },
+                { GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.FIELD_SYMBOL }
             };
             Mine mine = new Mine(2, 2);
 
@@ -259,19 +264,21 @@ namespace BattleFieldGameTests
         [TestMethod]
         public void ExposionTypeFiveTest()
         {
-            char[,] testedField = new char[,]{
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,'5',GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL},
-            {GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL,GameFieldServices.FIELD_SYMBOL}
+            char[,] testedField = new char[,]
+            {
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, '5', GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL }
             };
-            char[,] expectedResultField = new char[,]{
-            {GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL},
-            {GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL},
-            {GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL},
-            {GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL},
-            {GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL,GameFieldServices.DESTROYED_SYMBOL}
+            char[,] expectedResultField = new char[,]
+            {
+                { GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL },
+                { GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL },
+                { GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL },
+                { GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL },
+                { GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL }
             };
             Mine mine = new Mine(2, 2);
 

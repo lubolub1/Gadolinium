@@ -22,12 +22,12 @@ namespace BattleFieldGame
         /// Represents minimal mines count in percentages.
         /// </summary>
         private const double LOWER_MINES_COUNT = 0.15;
-
+        
         /// <summary>
         /// Represents maximal mines count in percentages.
         /// </summary>
         private const double UPPER_MINES_COUNT = 0.3;
-
+        
         /// <summary>
         /// Represents empty cell on the field.
         /// </summary>
@@ -37,15 +37,16 @@ namespace BattleFieldGame
         /// Represents destroyed cell on the field.
         /// </summary>
         public const char DESTROYED_SYMBOL = 'X';
-
+        
         /// <summary>
         /// Represents random numbers generator.
         /// </summary>
-        private static readonly Random rand = new Random();
+        private static readonly Random Rand = new Random();
+        
         #endregion
-
+        
         #region Methods
-
+        
         /// <summary>
         /// Create a game field from given size.
         /// </summary>
@@ -54,13 +55,13 @@ namespace BattleFieldGame
         public static char[,] CreateField(int size)
         {
             char[,] field = new char[size, size];
-
+            
             FillFieldWithDefaultSymbol(field);
             PlaceMines(field);
-
+            
             return field;
         }
-
+        
         /// <summary>
         /// Locate mines in a given field. Mines count is between 15% and 30%
         /// of the field size. The mines and located in random positions.
@@ -71,18 +72,18 @@ namespace BattleFieldGame
             List<Mine> mines = new List<Mine>();
             int size = field.GetLength(0);
             int minesCount = DetermineMinesCount(size);
-
+            
             for (int i = 0; i < minesCount; i++)
             {
-                int mineRow = rand.Next(0, size);
-                int mineCol = rand.Next(0, size);
+                int mineRow = Rand.Next(0, size);
+                int mineCol = Rand.Next(0, size);
                 Mine newMine = new Mine(mineRow, mineCol);
-
+                
                 if (!mines.Contains(newMine))
                 {
                     mines.Add(newMine);
-
-                    int mineType = rand.Next('1', '6');
+                    
+                    int mineType = Rand.Next('1', '6');
                     field[mineRow, mineCol] = Convert.ToChar(mineType);
                 }
                 else
@@ -91,7 +92,7 @@ namespace BattleFieldGame
                 }
             }
         }
-
+        
         /// <summary>
         /// Field is filled with the default symbol.
         /// </summary>
@@ -99,7 +100,7 @@ namespace BattleFieldGame
         private static void FillFieldWithDefaultSymbol(char[,] field)
         {
             int size = field.GetLength(0);
-
+            
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
@@ -108,7 +109,7 @@ namespace BattleFieldGame
                 }
             }
         }
-
+        
         /// <summary>
         /// Determine mines count from default min and max border.
         /// </summary>
@@ -117,18 +118,18 @@ namespace BattleFieldGame
         private static int DetermineMinesCount(int size)
         {
             int fieldSize = size * size;
-            int lowerMinesCount = (int)(Math.Ceiling(LOWER_MINES_COUNT * fieldSize));
-            int upperMinesCount = (int)(Math.Ceiling(UPPER_MINES_COUNT * fieldSize));
-            int minesCount = rand.Next(lowerMinesCount, upperMinesCount);
-
+            int lowerMinesCount = (int)Math.Ceiling(LOWER_MINES_COUNT * fieldSize);
+            int upperMinesCount = (int)Math.Ceiling(UPPER_MINES_COUNT * fieldSize);
+            int minesCount = Rand.Next(lowerMinesCount, upperMinesCount);
+            
             if (size == 1)
             {
                 minesCount--;
             }
-
+            
             return minesCount;
         }
-
+        
         /// <summary>
         /// Check if there are mines on the field.
         /// </summary>
@@ -137,7 +138,7 @@ namespace BattleFieldGame
         public static bool AreMinesLeft(char[,] field)
         {
             int size = field.GetLength(0);
-
+            
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
@@ -148,10 +149,10 @@ namespace BattleFieldGame
                     }
                 }
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         /// Check if given coordinates are in the field.
         /// </summary>
@@ -165,10 +166,10 @@ namespace BattleFieldGame
             {
                 return false;
             }
-
+            
             return true;
         }
-
+        
         /// <summary>
         /// Fill field with destroy symbols when curtain cells are hit by a mine.
         /// </summary>
@@ -184,7 +185,7 @@ namespace BattleFieldGame
                 }
             }
         }
-
+        
         /// <summary>
         /// Field is filled with given mine explosion of type one.
         /// </summary>
@@ -195,15 +196,15 @@ namespace BattleFieldGame
             List<Mine> hitPositions = new List<Mine>
             {
                 new Mine(mine.Row - 1, mine.Col - 1),
-                new Mine(mine.Row - 1,mine.Col + 1),
+                new Mine(mine.Row - 1, mine.Col + 1),
                 new Mine(mine.Row + 1, mine.Col - 1),
-                new Mine(mine.Row + 1,mine.Col + 1),
-                new Mine(mine.Row,mine.Col)
+                new Mine(mine.Row + 1, mine.Col + 1),
+                new Mine(mine.Row, mine.Col)
             };
-
+            
             MineHits(field, hitPositions);
         }
-
+        
         /// <summary>
         /// Field is filled with given mine explosion of type two.
         /// </summary>
@@ -222,7 +223,7 @@ namespace BattleFieldGame
                 }
             }
         }
-
+        
         /// <summary>
         /// Field is filled with given mine explosion of type three.
         /// </summary>
@@ -233,15 +234,15 @@ namespace BattleFieldGame
             List<Mine> hitPositions = new List<Mine>
             {
                 new Mine(mine.Row - 2, mine.Col),
-                new Mine(mine.Row + 2,mine.Col),
-                new Mine(mine.Row , mine.Col - 2),
-                new Mine(mine.Row,mine.Col + 2)
+                new Mine(mine.Row + 2, mine.Col),
+                new Mine(mine.Row, mine.Col - 2),
+                new Mine(mine.Row, mine.Col + 2)
             };
-
+            
             MineHits(field, hitPositions);
             ExplosionTypeTwo(field, mine);
         }
-
+        
         /// <summary>
         /// Field is filled with given mine explosion of type four.
         /// </summary>
@@ -257,7 +258,7 @@ namespace BattleFieldGame
                     bool upperDoubleLeft = (row == mine.Row - 2) && (col == mine.Col + 2);
                     bool downDoubleRight = (row == mine.Row + 2) && (col == mine.Col - 2);
                     bool downDoubleLeft = (row == mine.Row + 2) && (col == mine.Col + 2);
-
+                    
                     if (AreCordinatesInAField(field, row, col) && !upperDoubleRight && !upperDoubleLeft &&
                         !downDoubleRight && !downDoubleLeft)
                     {
@@ -266,7 +267,7 @@ namespace BattleFieldGame
                 }
             }
         }
-
+        
         /// <summary>
         /// Field is filled with given mine explosion of type five.
         /// </summary>
@@ -285,7 +286,7 @@ namespace BattleFieldGame
                 }
             }
         }
-
+        
         /// <summary>
         /// Method which determine mine type of explosion.
         /// </summary>
@@ -295,7 +296,7 @@ namespace BattleFieldGame
         {
             string mineType = field[mine.Row, mine.Col].ToString();
             ExplosionType explosionType = ExplosionType.One;
-
+            
             try
             {
                 explosionType = (ExplosionType)Enum.Parse(typeof(ExplosionType), mineType);
@@ -304,7 +305,7 @@ namespace BattleFieldGame
             {
                 Console.WriteLine("'{0}' is not a member of the ExplosionType enumeration.", mineType);
             }
-
+            
             switch (explosionType)
             {
                 case ExplosionType.One:
@@ -326,7 +327,7 @@ namespace BattleFieldGame
                     throw new NotImplementedException("This type of explosion is not supported yet.");
             }
         }
-
+        
         /// <summary>
         /// Check if the user given coordinates are valid move.
         /// </summary>
@@ -340,14 +341,15 @@ namespace BattleFieldGame
             {
                 return false;
             }
-
+            
             if (field[x, y] == DESTROYED_SYMBOL || field[x, y] == FIELD_SYMBOL)
             {
                 return false;
             }
-
+            
             return true;
         }
+    
         #endregion
     }
 }

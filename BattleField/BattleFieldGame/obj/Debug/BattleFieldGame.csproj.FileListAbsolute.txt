@@ -19,3 +19,7 @@ C:\Users\Lubo\Desktop\BattleField\BattleFieldGame.exe.config
 C:\Users\Lubo\Desktop\BattleField\BattleFieldGame.exe
 C:\Users\Lubo\Desktop\BattleField\BattleFieldGame.pdb
 C:\Users\Lubo\Desktop\BattleField\BattleFieldGame.XML
+C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Desktop\BattleField\BattleFieldGame.exe.config
+C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Desktop\BattleField\BattleFieldGame.exe
+C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Desktop\BattleField\BattleFieldGame.pdb
+C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Desktop\BattleField\BattleFieldGame.XML

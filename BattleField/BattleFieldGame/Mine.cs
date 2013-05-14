@@ -15,21 +15,21 @@ namespace BattleFieldGame
     public class Mine
     {
         #region Fields
-
+        
         /// <summary>
-        /// Get or set X(row) coordinate.
+        /// Gets or sets X(row) coordinate.
         /// </summary>
         public int Row { get; set; }
-
+        
         /// <summary>
-        /// get or set Y(col) coordinate.
+        /// gets or sets Y(col) coordinate.
         /// </summary>
         public int Col { get; set; }
-
+        
         #endregion
-
+        
         #region Constructor
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="Mine"/> class.
         /// </summary>
@@ -40,11 +40,11 @@ namespace BattleFieldGame
             this.Row = row;
             this.Col = col;
         }
-
+        
         #endregion
-
+        
         #region Methods
-
+        
         /// <summary>
         /// Set equal method.
         /// </summary>
@@ -57,10 +57,10 @@ namespace BattleFieldGame
             {
                 return false;
             }
-
+            
             return this.Row == mine.Row && this.Col == mine.Col;
         }
-                
+        
         /// <summary>
         /// Set new GetHashCodeMethod.
         /// </summary>
@@ -69,6 +69,7 @@ namespace BattleFieldGame
         {
             return 11 * (this.Row + this.Col);
         }
+    
         #endregion
     }
 }
