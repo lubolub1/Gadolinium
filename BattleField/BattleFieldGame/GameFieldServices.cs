@@ -8,8 +8,7 @@
 namespace BattleFieldGame
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
+    using System.Collections.Generic;    
 
     /// <summary>
     /// Represents GameFieldServices class who includes all methods
