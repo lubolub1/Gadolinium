@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Text;
 
     public class GameServices
     {
@@ -250,35 +251,38 @@
             return true;
         }
 
-        public static void ShowFieldOnConsole(char[,] field)
+        public static string StringifyField(char[,] field)
         {
-            Console.Write("   ");
+            StringBuilder fieldStringify = new StringBuilder();
             int size = field.GetLength(0);
+            
+            fieldStringify.Append("   ");            
 
             for (int i = 0; i < size; i++)
             {
-                Console.Write("{0} ", i);
+                fieldStringify.AppendFormat("{0} ", i);
             }
 
-            Console.WriteLine();
-            Console.Write("   ");
+            fieldStringify.Append(Environment.NewLine);
+            fieldStringify.Append("   ");
 
             for (int i = 0; i < size * 2; i++)
             {
-                Console.Write("-");
+                fieldStringify.Append("-");
             }
 
-            Console.WriteLine();
+            fieldStringify.Append(Environment.NewLine);
 
             for (int i = 0; i < size; i++)
             {
-                Console.Write("{0} |", i);
+                fieldStringify.AppendFormat("{0} |", i);
                 for (int j = 0; j < size; j++)
                 {
-                    Console.Write("{0} ", field[i, j]);
+                    fieldStringify.AppendFormat("{0} ", field[i, j]);
                 }
-                Console.WriteLine();
+                fieldStringify.Append(Environment.NewLine);                
             }
+            return fieldStringify.ToString();
         }
 
         public static Mine ExtractMineFromString(string line)

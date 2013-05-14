@@ -17,8 +17,8 @@ namespace BattleFieldGameTests
         [TestMethod]
         public void CreateFieldDimensionsWithFiveTest()
         {
-           char[,] testedField = GameServices.CreateField(5);
-           Assert.IsTrue(testedField.GetLength(0) == 5 &&testedField.GetLength(1) == 5);
+            char[,] testedField = GameServices.CreateField(5);
+            Assert.IsTrue(testedField.GetLength(0) == 5 && testedField.GetLength(1) == 5);
         }
 
         [TestMethod]
@@ -31,14 +31,14 @@ namespace BattleFieldGameTests
             {
                 for (int j = 0; j < testedField.GetLength(1); j++)
                 {
-                    if (testedField[i,j]!=GameServices.FIELD_SYMBOL&&testedField[i,j]!=GameServices.DESTROYED_SYMBOL)
+                    if (testedField[i, j] != GameServices.FIELD_SYMBOL && testedField[i, j] != GameServices.DESTROYED_SYMBOL)
                     {
                         minesCount++;
                     }
                 }
             }
 
-            Assert.IsTrue(3.75<=minesCount&&minesCount<=7.5);
+            Assert.IsTrue(3.75 <= minesCount && minesCount <= 7.5);
         }
 
         [TestMethod]
@@ -58,7 +58,7 @@ namespace BattleFieldGameTests
                 }
             }
 
-            Assert.IsTrue(minesCount==0);
+            Assert.IsTrue(minesCount == 0);
         }
 
         [TestMethod]
@@ -111,7 +111,7 @@ namespace BattleFieldGameTests
             {GameServices.FIELD_SYMBOL,'1'},
             };
 
-            Assert.IsFalse(GameServices.IsValidMove(testedField,-1,0));
+            Assert.IsFalse(GameServices.IsValidMove(testedField, -1, 0));
         }
 
         [TestMethod]
@@ -141,17 +141,189 @@ namespace BattleFieldGameTests
         {
             string test = "1 1";
             Mine correctMine = new Mine(1, 1);
-            Mine testedMine=GameServices.ExtractMineFromString(test);
+            Mine testedMine = GameServices.ExtractMineFromString(test);
 
             Assert.IsTrue(correctMine.Col == testedMine.Col && correctMine.Row == testedMine.Row);
         }
 
         [TestMethod]
-        public void ExtractMineFromStringIncorrectInputTest()
+        public void ExtractMineFromStringIncorrectInputTest1()
         {
-            string test = "a 1";            
+            string test = "a 1";
 
             Assert.IsNull(GameServices.ExtractMineFromString(test));
+        }
+
+        [TestMethod]
+        public void ExtractMineFromStringIncorrectInputTest2()
+        {
+            string test = "1 a";
+
+            Assert.IsNull(GameServices.ExtractMineFromString(test));
+        }
+
+        [TestMethod]
+        public void ExtractMineFromStringIncorrectInputNullTest()
+        {
+            string test = null;
+
+            Assert.IsNull(GameServices.ExtractMineFromString(test));
+        }
+
+        [TestMethod]
+        public void StringifyFieldTest()
+        {
+            char[,] testedField = new char[,]{
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,'1',GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL}
+            };
+            string expectedResult = "   0 1 2 3 4 " + Environment.NewLine +
+                "   ----------" + Environment.NewLine +
+                "0 |- - - - - " + Environment.NewLine +
+                "1 |- - - - - " + Environment.NewLine +
+                "2 |- - 1 - - " + Environment.NewLine +
+                "3 |- - - - - " + Environment.NewLine +
+                "4 |- - - - - " + Environment.NewLine;
+
+           Assert.AreEqual(expectedResult, GameServices.StringifyField(testedField));
+        }
+
+        [TestMethod]
+        public void ExposionTypeOneTest()
+        {
+            char[,] testedField = new char[,]{
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,'1',GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL}
+            };
+            char[,] expectedResultField = new char[,]{
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL}
+            };
+            Mine mine = new Mine(2, 2);
+
+            GameServices.DestroyFieldCells(testedField, mine);
+
+            Assert.IsTrue(EqualityCharArrayCheck(testedField, expectedResultField));
+        }
+
+        private static bool EqualityCharArrayCheck(char[,] testedField, char[,] expectedResultField)
+        {
+            for (int i = 0; i < testedField.GetLength(0); i++)
+            {
+                for (int j = 0; j < testedField.GetLength(1); j++)
+                {
+                    if (testedField[i, j] != expectedResultField[i, j])
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        [TestMethod]
+        public void ExposionTypeTwoTest()
+        {
+            char[,] testedField = new char[,]{
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,'2',GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL}
+            };
+            char[,] expectedResultField = new char[,]{
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL}
+            };
+            Mine mine = new Mine(2, 2);
+
+            GameServices.DestroyFieldCells(testedField, mine);
+
+            Assert.IsTrue(EqualityCharArrayCheck(testedField, expectedResultField));
+        }
+
+        [TestMethod]
+        public void ExposionTypeThreeTest()
+        {
+            char[,] testedField = new char[,]{
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,'3',GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL}
+            };
+            char[,] expectedResultField = new char[,]{
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL}
+            };
+            Mine mine = new Mine(2, 2);
+
+            GameServices.DestroyFieldCells(testedField, mine);
+
+            Assert.IsTrue(EqualityCharArrayCheck(testedField, expectedResultField));
+        }
+
+        [TestMethod]
+        public void ExposionTypeFourTest()
+        {
+            char[,] testedField = new char[,]{
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,'4',GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL}
+            };
+            char[,] expectedResultField = new char[,]{
+            {GameServices.FIELD_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL},
+            {GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL},
+            {GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.FIELD_SYMBOL}
+            };
+            Mine mine = new Mine(2, 2);
+
+            GameServices.DestroyFieldCells(testedField, mine);
+
+            Assert.IsTrue(EqualityCharArrayCheck(testedField, expectedResultField));
+        }
+
+        [TestMethod]
+        public void ExposionTypeFiveTest()
+        {
+            char[,] testedField = new char[,]{
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,'5',GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL},
+            {GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL,GameServices.FIELD_SYMBOL}
+            };
+            char[,] expectedResultField = new char[,]{
+            {GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL},
+            {GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL},
+            {GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL},
+            {GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL},
+            {GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL,GameServices.DESTROYED_SYMBOL}
+            };
+            Mine mine = new Mine(2, 2);
+
+            GameServices.DestroyFieldCells(testedField, mine);
+
+            Assert.IsTrue(EqualityCharArrayCheck(testedField, expectedResultField));
         }
     }
 }

@@ -28,7 +28,6 @@
             }
 
             gameField = GameServices.CreateField(size);
-            Console.WriteLine(88);
             StartInteraction();
         }
 
@@ -40,7 +39,8 @@
 
             while (GameServices.AreMinesLeft(gameField))
             {
-                GameServices.ShowFieldOnConsole(gameField);
+                string stringifiedField = GameServices.StringifyField(gameField);
+                Console.WriteLine(stringifiedField);
                 Mine mineCoordinates;
                 do
                 {
@@ -61,7 +61,8 @@
                 }
             }
 
-            GameServices.ShowFieldOnConsole(gameField);
+            string stringifiedFieldEnd = GameServices.StringifyField(gameField);
+            Console.WriteLine(stringifiedFieldEnd);
             Console.WriteLine("Game over. Detonated mines: {0}", blownMines);
         }
     }

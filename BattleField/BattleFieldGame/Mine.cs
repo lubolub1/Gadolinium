@@ -23,8 +23,7 @@
             }
             return this.Row == mine.Row && this.Col == mine.Col;
         }
-
-        // just for the warning
+                
         public override int GetHashCode()
         {
             return 11 * this.Row + this.Col;
