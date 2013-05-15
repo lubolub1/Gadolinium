@@ -22,7 +22,7 @@ namespace BattleFieldGame
         public int Row { get; set; }
         
         /// <summary>
-        /// gets or sets Y(col) coordinate.
+        /// Gets or sets Y(col) coordinate.
         /// </summary>
         public int Col { get; set; }
         
