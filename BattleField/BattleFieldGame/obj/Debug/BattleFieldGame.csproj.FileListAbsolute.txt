@@ -23,3 +23,10 @@ C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Desktop\BattleField\Battle
 C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Desktop\BattleField\BattleFieldGame.exe
 C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Desktop\BattleField\BattleFieldGame.pdb
 C:\Users\Georgi\Documents\Visual Studio 2012\Projects\Desktop\BattleField\BattleFieldGame.XML
+C:\Users\Georgi\Documents\Visual Studio 2012\Gadolinium.git\Desktop\BattleField\BattleFieldGame.exe.config
+C:\Users\Georgi\Documents\Visual Studio 2012\Gadolinium.git\trunk\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.exe
+C:\Users\Georgi\Documents\Visual Studio 2012\Gadolinium.git\trunk\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.pdb
+C:\Users\Georgi\Documents\Visual Studio 2012\Gadolinium.git\Desktop\BattleField\BattleFieldGame.exe
+C:\Users\Georgi\Documents\Visual Studio 2012\Gadolinium.git\Desktop\BattleField\BattleFieldGame.pdb
+C:\Users\Georgi\Documents\Visual Studio 2012\Gadolinium.git\Desktop\BattleField\BattleFieldGame.XML
+C:\Users\Georgi\Documents\Visual Studio 2012\Gadolinium.git\trunk\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.csprojResolveAssemblyReference.cache
