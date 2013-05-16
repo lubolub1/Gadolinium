@@ -99,7 +99,7 @@
             Represents destroyed cell on the field.
             </summary>
         </member>
-        <member name="F:BattleFieldGame.GameFieldServices.rand">
+        <member name="F:BattleFieldGame.GameFieldServices.Rand">
             <summary>
             Represents random numbers generator.
             </summary>
@@ -232,12 +232,12 @@
         </member>
         <member name="P:BattleFieldGame.Mine.Row">
             <summary>
-            Get or set X(row) coordinate.
+            Gets or sets X(row) coordinate.
             </summary>
         </member>
         <member name="P:BattleFieldGame.Mine.Col">
             <summary>
-            get or set Y(col) coordinate.
+            Gets or sets Y(col) coordinate.
             </summary>
         </member>
         <member name="T:BattleFieldGame.Engine">

@@ -44,7 +44,7 @@ namespace BattleFieldGameTests
         [TestMethod]
         public void CreateFieldSizeOneMinesCountTest()
         {
-            char[,] testedField = GameFieldServices.CreateField(1);
+            char[,] testedField = GameFieldServices.CreateField(5);
             int minesCount = 0;
 
             for (int i = 0; i < testedField.GetLength(0); i++)
@@ -58,8 +58,8 @@ namespace BattleFieldGameTests
                 }
             }
 
-            Assert.IsTrue(minesCount == 0);
-        }
+            Assert.IsTrue(3.75 <= minesCount && minesCount <= 7.5);
+        }        
 
         [TestMethod]
         public void CreateFieldSizeTenMinesCountTest()
@@ -162,7 +162,7 @@ namespace BattleFieldGameTests
             };
             Mine mine = new Mine(2, 2);
 
-            GameFieldServices.DestroyFieldCells(testedField, mine);
+            GameFieldServices.DestroyFieldCells(testedField, mine);            
 
             Assert.IsTrue(EqualityCharArrayCheck(testedField, expectedResultField));
         }
@@ -281,6 +281,26 @@ namespace BattleFieldGameTests
                 { GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL }
             };
             Mine mine = new Mine(2, 2);
+
+            GameFieldServices.DestroyFieldCells(testedField, mine);
+
+            Assert.IsTrue(EqualityCharArrayCheck(testedField, expectedResultField));
+        }
+
+        [TestMethod]
+        public void ExposionTypeFiveTestSmallField()
+        {
+            char[,] testedField = new char[,]
+            {
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, '5', GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL },
+                { GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL, GameFieldServices.FIELD_SYMBOL }                
+            };
+            char[,] expectedResultField = new char[,]
+            {
+                { GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL },
+                { GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL, GameFieldServices.DESTROYED_SYMBOL }                
+            };
+            Mine mine = new Mine(0, 2);
 
             GameFieldServices.DestroyFieldCells(testedField, mine);
 

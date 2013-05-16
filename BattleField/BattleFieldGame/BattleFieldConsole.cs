@@ -152,7 +152,8 @@ namespace BattleFieldGame
                 Mine mineCoordinates;
                 do
                 {
-                    Console.Write("Please enter coordinates: ");
+                    Console.WriteLine("Please enter coordinates of a bomb.");
+                    Console.Write("Two digits separated by space: ");
                     readBuffer = Console.ReadLine();
                     mineCoordinates = this.ExtractMineFromString(readBuffer);
                 }
@@ -171,7 +172,7 @@ namespace BattleFieldGame
             
             string stringifiedFieldEnd = this.StringifyField(this.gameField);
             Console.WriteLine(stringifiedFieldEnd);
-            Console.WriteLine("Game over. Detonated mines: {0}", blownMines);
+            Console.WriteLine("Game over. Your score is  {0} detonated mines: ", blownMines);
         }
     
         #endregion
