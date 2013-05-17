@@ -43,7 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BattleFieldConsole.cs" />
+    <Compile Include="IExplodable.cs" />
+    <Compile Include="Explosion.cs" />
+    <Compile Include="ExplosionFive.cs" />
+    <Compile Include="ExplosionFour.cs" />
+    <Compile Include="ExplosionThree.cs" />
+    <Compile Include="ExplosionTwo.cs" />
     <Compile Include="ExplosionType.cs" />
+    <Compile Include="ExplosionOne.cs" />
     <Compile Include="GameFieldServices.cs" />
     <Compile Include="Mine.cs" />
     <Compile Include="Engine.cs" />

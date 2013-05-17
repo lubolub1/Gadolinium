@@ -160,7 +160,7 @@ namespace BattleFieldGame
         /// <param name="x">X coordinate.</param>
         /// <param name="y">Y coordinate.</param>
         /// <returns>Returns are the coordinates in the field or not.</returns>
-        private static bool AreCordinatesInAField(char[,] field, int x, int y)
+        public static bool AreCordinatesInAField(char[,] field, int x, int y)
         {
             if (x < 0 || y < 0 || x >= field.GetLength(0) || y >= field.GetLength(1))
             {
@@ -175,7 +175,7 @@ namespace BattleFieldGame
         /// </summary>
         /// <param name="field">Given field</param>
         /// <param name="hitPositions">List containing cell which must be destroyed.</param>
-        private static void MineHits(char[,] field, List<Mine> hitPositions)
+        public static void MineHits(char[,] field, List<Mine> hitPositions)
         {
             foreach (var hitPosition in hitPositions)
             {
@@ -185,108 +185,7 @@ namespace BattleFieldGame
                 }
             }
         }
-        
-        /// <summary>
-        /// Field is filled with given mine explosion of type one.
-        /// </summary>
-        /// <param name="field">Given field.</param>
-        /// <param name="mine">Given mine.</param>
-        private static void ExpolosionTypeOne(char[,] field, Mine mine)
-        {
-            List<Mine> hitPositions = new List<Mine>
-            {
-                new Mine(mine.Row - 1, mine.Col - 1),
-                new Mine(mine.Row - 1, mine.Col + 1),
-                new Mine(mine.Row + 1, mine.Col - 1),
-                new Mine(mine.Row + 1, mine.Col + 1),
-                new Mine(mine.Row, mine.Col)
-            };
-            
-            MineHits(field, hitPositions);
-        }
-        
-        /// <summary>
-        /// Field is filled with given mine explosion of type two.
-        /// </summary>
-        /// <param name="field">Given field.</param>
-        /// <param name="mine">Given mine.</param>
-        private static void ExplosionTypeTwo(char[,] field, Mine mine)
-        {
-            for (int i = mine.Row - 1; i <= mine.Row + 1; i++)
-            {
-                for (int j = mine.Col - 1; j <= mine.Col + 1; j++)
-                {
-                    if (AreCordinatesInAField(field, i, j))
-                    {
-                        field[i, j] = DESTROYED_SYMBOL;
-                    }
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Field is filled with given mine explosion of type three.
-        /// </summary>
-        /// <param name="field">Given field.</param>
-        /// <param name="mine">Given mine.</param>
-        private static void ExplosionTypeThree(char[,] field, Mine mine)
-        {
-            List<Mine> hitPositions = new List<Mine>
-            {
-                new Mine(mine.Row - 2, mine.Col),
-                new Mine(mine.Row + 2, mine.Col),
-                new Mine(mine.Row, mine.Col - 2),
-                new Mine(mine.Row, mine.Col + 2)
-            };
-            
-            MineHits(field, hitPositions);
-            ExplosionTypeTwo(field, mine);
-        }
-        
-        /// <summary>
-        /// Field is filled with given mine explosion of type four.
-        /// </summary>
-        /// <param name="field">Given field.</param>
-        /// <param name="mine">Given mine.</param>
-        private static void ExplosionTypeFour(char[,] field, Mine mine)
-        {
-            for (int row = mine.Row - 2; row <= mine.Row + 2; row++)
-            {
-                for (int col = mine.Col - 2; col <= mine.Col + 2; col++)
-                {
-                    bool upperDoubleRight = (row == mine.Row - 2) && (col == mine.Col - 2);
-                    bool upperDoubleLeft = (row == mine.Row - 2) && (col == mine.Col + 2);
-                    bool downDoubleRight = (row == mine.Row + 2) && (col == mine.Col - 2);
-                    bool downDoubleLeft = (row == mine.Row + 2) && (col == mine.Col + 2);
-                    
-                    if (AreCordinatesInAField(field, row, col) && !upperDoubleRight && !upperDoubleLeft &&
-                        !downDoubleRight && !downDoubleLeft)
-                    {
-                        field[row, col] = DESTROYED_SYMBOL;
-                    }
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Field is filled with given mine explosion of type five.
-        /// </summary>
-        /// <param name="field">Given field.</param>
-        /// <param name="mine">Given mine.</param>
-        private static void ExplosionTypeFive(char[,] field, Mine mine)
-        {
-            for (int i = mine.Row - 2; i <= mine.Row + 2; i++)
-            {
-                for (int j = mine.Col - 2; j <= mine.Col + 2; j++)
-                {
-                    if (AreCordinatesInAField(field, i, j))
-                    {
-                        field[i, j] = DESTROYED_SYMBOL;
-                    }
-                }
-            }
-        }
-        
+                     
         /// <summary>
         /// Method which determine mine type of explosion.
         /// </summary>
@@ -309,19 +208,19 @@ namespace BattleFieldGame
             switch (explosionType)
             {
                 case ExplosionType.One:
-                    ExpolosionTypeOne(field, mine);
+                    new ExplosionOne().Explode(field, mine);
                     break;
                 case ExplosionType.Two:
-                    ExplosionTypeTwo(field, mine);
+                    new ExplosionTwo().Explode(field, mine);
                     break;
                 case ExplosionType.Three:
-                    ExplosionTypeThree(field, mine);
+                    new ExplosionThree().Explode(field, mine);
                     break;
                 case ExplosionType.Four:
-                    ExplosionTypeFour(field, mine);
+                    new ExplosionFour().Explode(field, mine);
                     break;
                 case ExplosionType.Five:
-                    ExplosionTypeFive(field, mine);
+                    new ExplosionFive().Explode(field, mine);
                     break;
                 default:
                     throw new NotImplementedException("This type of explosion is not supported yet.");

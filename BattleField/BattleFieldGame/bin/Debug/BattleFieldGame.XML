@@ -43,6 +43,34 @@
             Responsible for users interactions.
             </summary>
         </member>
+        <member name="M:BattleFieldGame.ExplosionFive.Explode(System.Char[0:,0:],BattleFieldGame.Mine)">
+            <summary>
+            Field is filled with given mine explosion of type five.
+            </summary>
+            <param name="field">Given field.</param>
+            <param name="mine">Given mine.</param>
+        </member>
+        <member name="M:BattleFieldGame.ExplosionFour.Explode(System.Char[0:,0:],BattleFieldGame.Mine)">
+            <summary>
+            Field is filled with given mine explosion of type four.
+            </summary>
+            <param name="field">Given field.</param>
+            <param name="mine">Given mine.</param>
+        </member>
+        <member name="M:BattleFieldGame.ExplosionThree.Explode(System.Char[0:,0:],BattleFieldGame.Mine)">
+            <summary>
+            Field is filled with given mine explosion of type three.
+            </summary>
+            <param name="field">Given field.</param>
+            <param name="mine">Given mine.</param>
+        </member>
+        <member name="M:BattleFieldGame.ExplosionTwo.Explode(System.Char[0:,0:],BattleFieldGame.Mine)">
+            <summary>
+            Field is filled with given mine explosion of type two.
+            </summary>
+            <param name="field">Given field.</param>
+            <param name="mine">Given mine.</param>
+        </member>
         <member name="T:BattleFieldGame.ExplosionType">
             <summary>
             Represents all explosion types.
@@ -72,6 +100,13 @@
             <summary>
             Type five explosion.
             </summary>
+        </member>
+        <member name="M:BattleFieldGame.ExplosionOne.Explode(System.Char[0:,0:],BattleFieldGame.Mine)">
+            <summary>
+            Field is filled with given mine explosion of type one.
+            </summary>
+            <param name="field">Given field.</param>
+            <param name="mine">Given mine.</param>
         </member>
         <member name="T:BattleFieldGame.GameFieldServices">
             <summary>
@@ -153,41 +188,6 @@
             </summary>
             <param name="field">Given field</param>
             <param name="hitPositions">List containing cell which must be destroyed.</param>
-        </member>
-        <member name="M:BattleFieldGame.GameFieldServices.ExpolosionTypeOne(System.Char[0:,0:],BattleFieldGame.Mine)">
-            <summary>
-            Field is filled with given mine explosion of type one.
-            </summary>
-            <param name="field">Given field.</param>
-            <param name="mine">Given mine.</param>
-        </member>
-        <member name="M:BattleFieldGame.GameFieldServices.ExplosionTypeTwo(System.Char[0:,0:],BattleFieldGame.Mine)">
-            <summary>
-            Field is filled with given mine explosion of type two.
-            </summary>
-            <param name="field">Given field.</param>
-            <param name="mine">Given mine.</param>
-        </member>
-        <member name="M:BattleFieldGame.GameFieldServices.ExplosionTypeThree(System.Char[0:,0:],BattleFieldGame.Mine)">
-            <summary>
-            Field is filled with given mine explosion of type three.
-            </summary>
-            <param name="field">Given field.</param>
-            <param name="mine">Given mine.</param>
-        </member>
-        <member name="M:BattleFieldGame.GameFieldServices.ExplosionTypeFour(System.Char[0:,0:],BattleFieldGame.Mine)">
-            <summary>
-            Field is filled with given mine explosion of type four.
-            </summary>
-            <param name="field">Given field.</param>
-            <param name="mine">Given mine.</param>
-        </member>
-        <member name="M:BattleFieldGame.GameFieldServices.ExplosionTypeFive(System.Char[0:,0:],BattleFieldGame.Mine)">
-            <summary>
-            Field is filled with given mine explosion of type five.
-            </summary>
-            <param name="field">Given field.</param>
-            <param name="mine">Given mine.</param>
         </member>
         <member name="M:BattleFieldGame.GameFieldServices.DestroyFieldCells(System.Char[0:,0:],BattleFieldGame.Mine)">
             <summary>

@@ -30,3 +30,17 @@ C:\Users\Georgi\Documents\Visual Studio 2012\Gadolinium.git\Desktop\BattleField\
 C:\Users\Georgi\Documents\Visual Studio 2012\Gadolinium.git\Desktop\BattleField\BattleFieldGame.pdb
 C:\Users\Georgi\Documents\Visual Studio 2012\Gadolinium.git\Desktop\BattleField\BattleFieldGame.XML
 C:\Users\Georgi\Documents\Visual Studio 2012\Gadolinium.git\trunk\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.csprojResolveAssemblyReference.cache
+C:\Users\Georgi\Downloads\Gadolinium-master\Desktop\BattleField\BattleFieldGame.exe.config
+C:\Users\Georgi\Downloads\Gadolinium-master\Gadolinium-master\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.exe
+C:\Users\Georgi\Downloads\Gadolinium-master\Gadolinium-master\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.pdb
+C:\Users\Georgi\Downloads\Gadolinium-master\Desktop\BattleField\BattleFieldGame.exe
+C:\Users\Georgi\Downloads\Gadolinium-master\Desktop\BattleField\BattleFieldGame.pdb
+C:\Users\Georgi\Downloads\Gadolinium-master\Desktop\BattleField\BattleFieldGame.XML
+C:\Users\Georgi\Downloads\Gadolinium-master\Gadolinium-master\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.csprojResolveAssemblyReference.cache
+C:\Users\Georgi\Downloads\Gadolinium-master - Copy\Desktop\BattleField\BattleFieldGame.exe.config
+C:\Users\Georgi\Downloads\Gadolinium-master - Copy\Gadolinium-master\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.exe
+C:\Users\Georgi\Downloads\Gadolinium-master - Copy\Gadolinium-master\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.pdb
+C:\Users\Georgi\Downloads\Gadolinium-master - Copy\Gadolinium-master\BattleField\BattleFieldGame\obj\Debug\BattleFieldGame.csprojResolveAssemblyReference.cache
+C:\Users\Georgi\Downloads\Gadolinium-master - Copy\Desktop\BattleField\BattleFieldGame.exe
+C:\Users\Georgi\Downloads\Gadolinium-master - Copy\Desktop\BattleField\BattleFieldGame.pdb
+C:\Users\Georgi\Downloads\Gadolinium-master - Copy\Desktop\BattleField\BattleFieldGame.XML
